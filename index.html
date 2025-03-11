@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewGeek</title>
+    <style>
+        .nav {
+            position: relative;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 30px;
+            background: none;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .nav-links {
+            left: 0%;
+            display: flex;
+            gap: 10px;
+        }
+        .nav-links button {
+            padding: 10px;
+            border: none;
+            background: #000000;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .nav-links button:hover {
+            background: #000000;
+        }
+        .close-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            text-align: right;
+        }
+        @media (max-width: 600px) {
+            .header {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 60%; 
+                height: 100%;
+                background: white;
+                box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
+                padding: 20px;
+                border-top-left-radius: 10px;
+                border-bottom-left-radius: 10px;
+                transition: transform 0.3s ease;
+                transform: translateX(100%);
+            }
+            .nav-links.show {
+                display: flex;
+                transform: translateX(0);
+            }
+            .close-btn {
+                display: block;
+            }
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #000000;
+            color: white;
+            padding: 1rem 2rem;
+            
+        }
+        .logo {
+    
+            
+            display: flex;
+            align-items: center;
+           
+        }
+        .logo img {
+            width: 80px; 
+            height: 80px; 
+            border-radius: 50%;
+            margin-right: 1rem;
+        }
+        .logo h2 {
+            font-size: 20px; 
+        }
+        .more-link {
+            position: absolute;
+            top: 150px; 
+            right: 20px; 
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .content {
+            padding: 2rem;
+            display: flex;
+            justify-content: space-around;
+            gap: 1rem;
+            position: relative; 
+        }
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            width: 300px;
+            text-align: center;
+        }
+        .card iframe {
+            width: 100%;
+            height: 180px;
+            border-radius: 8px;
+        }
+        .card p {
+            margin: 0.5rem 0;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+    </style>
+    <script>
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('show');
+        }
+    </script>
+</head>
+<body>
+    
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+            
+        </div>
+        <div class="nav">
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <div class="nav-links">
+                <button class="close-btn" onclick="toggleMenu()">✖</button>
+                <button>Início</button>
+                <button>Comunidade</button>
+                <button>Registrar-se</button>
+                <button>Login</button>
+            </div>
+            <button id="installButton" style="display: none;">Instalar</button>
+        </div>
+    </header>
+
+    
+    <section class="content">        
+        <div class="card">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/O6MdexNSy3o?si=Jd3FK6JMB1ESgUWz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <p>Uma jornada inesquecível que redefine narrativas emocionais e imersão visual. Experimente a versão definitiva de The Last of Us Part II com gráficos remasterizados em 4K, suporte a Ray Tracing e melhorias de desempenho para PC. Reviva a história intensa de Ellie em um mundo devastado, agora mais deslumbrante do que nunca.</p>
+           <b> Data de Lançamento:</b> <p>3 de abril de 2025</p>
+           <b>Plataformas:</b> <p>PC (Steam e Epic Store)</p>
+        </div>
+        <div class="card">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/QdBZY2fkU-0?si=37CG_GIHDL2S01n6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <p>Talvez o jogo mais aguardado de 2025, a Rockstar Games promete um retorno triunfante a Vice City com inspirações no universo de Bonnie e Clyde. A expectativa é altíssima e, se não houver adiamentos, este será o lançamento do ano.</p>
+            <b>Plataformas:</b><p>PS5, Xbox Series X/S</p>
+        </div>
+        <div class="card">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/mgI0seVFMXY?si=t8qno6yd2bvL2l6g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <p>Depois de um adiamento e muito desconfiança, a série Assassin’s Creed finalmente chega ao Japão feudal, retomando o foco na furtividade e espionagem. Um retorno às raízes da franquia que deve encantar tanto antigos fãs quanto novos jogadores.</p>
+            <b>Data de lançamento:</b><p>20 de março de 2025</p>
+            <b>Plataformas:</b><p>PS5, Xbox Series X/S, PC</p>
+        </div>
+    </section>
+</body>
+</html>
