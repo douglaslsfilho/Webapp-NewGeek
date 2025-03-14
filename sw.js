@@ -1,46 +1,44 @@
-const cacheName = 'NewGeek'
+const CACHE_NAME = 'NewGeek-cache-v1';
+const urlsToCache = [
+  '/',
+  '/index.html',
+  '/style.css',
+  '/app.js',
+  '/manifest.json'
+];
 
-self.addEventListener('install', function(event){
-    event.waitUntil(
-        caches.open(cacheName).then(function(cache){
-            cache.addAll([
-                './',
-                './index.html',
-                './manifest.webmanifest',
-                './index.js'
-            ])
+
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => {
+        return cache.addAll(urlsToCache);
+      })
+  );
+});
+
+
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request)
+      .then(response => {
+        return response || fetch(event.request);
+      })
+  );
+});
+
+
+self.addEventListener('activate', event => {
+  const cacheWhitelist = [CACHE_NAME];
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cacheName => {
+          if (!cacheWhitelist.includes(cacheName)) {
+            return caches.delete(cacheName);
+          }
         })
-    )
-    return self.skipWaiting()
-})
-
-self.addEventListener('activate', e =>{
-    const req = e.request
-    const url = new URL(req.url)
-
-    if(url.login === location.origin){
-            e.respondWith(cacheFirst(req))
-    } else{
-        e.respondWith(networkAndCache(req))
-    }
-})
-
-async function cacheFirst(req) {
-    const cache = await caches.open(cacheName)
-    const cached = await cache.match(req)
-    
-    return cached ||fetch(req)
-}
-
-async function networkAndCache(req) {
-    const cache = await caches.open(cacheName)
-    try{
-        const refresh = await fetch(req)
-        await cache.put(req, refresh.clone())
-        return refresh
-    } catch(e){
-        const cached = await cache.match(req)
-        return cached
-    }
-    
-}
+      );
+    })
+  );
+});

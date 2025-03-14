@@ -5,155 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="getmdl/material.min.css">
     <script src="getmdl/material.min.js"></script>
-    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="manifest" href="manifest.json">
     <title>NewGeek</title>
-    <style>
-        footer a {
-            color: #fff;
-            text-decoration: underline;
-        }
-        footer a:hover {
-            color: #ccc;
-        }
-        .nav-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .nav-links button {
-            background: #fff;
-            color: black;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 30px;
-            cursor: pointer;
-            color: white;
-        }
-
-        /* Menu Mobile */
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-            
-            .nav-links {
-                display: flex;
-                flex-direction: column;
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 70%;
-                height: 100vh;
-                background: rgba(0, 0, 0, 0.95);
-                padding-top: 60px;
-                transition: right 0.3s ease-in-out;
-                text-align: center;
-                box-shadow: -5px 0 10px rgba(255, 255, 255, 0.1);
-            }
-
-            .nav-links.show {
-                right: 0;
-            }
-
-            .nav-links button {
-                background: none;
-                color: white;
-                border: none;
-                padding: 15px;
-                font-size: 18px;
-                display: block;
-                width: 100%;
-            }
-
-            .close-menu {
-                position: absolute;
-                top: 15px;
-                right: 20px;
-                font-size: 25px;
-                cursor: pointer;
-                color: white;
-            }
-        }
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #000000;
-            margin: 0;
-            padding: 0;
-        }
-        
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #000000;
-            color: white;
-            padding: 1rem 2rem;
-            
-        }
-        .logo {
-    
-            
-            display: flex;
-            align-items: center;
-           
-        }
-        .logo img {
-            width: 80px; 
-            height: 80px; 
-            border-radius: 50%;
-            margin-right: 1rem;
-        }
-        .logo h2 {
-            font-size: 20px; 
-        }
-        .more-link {
-            position: absolute;
-            top: 150px; 
-            right: 20px; 
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-        }
-        .content {
-            padding: 2rem;
-            display: flex;
-            justify-content: space-around;
-            gap: 1rem;
-            position: relative; 
-        }
-        .card {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 1rem;
-            width: 300px;
-            text-align: center;
-        }
-        .card iframe {
-            width: 100%;
-            height: 180px;
-            border-radius: 8px;
-        }
-        .card p {
-            margin: 0.5rem 0;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            margin-top: 2rem;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
     <script>
         function toggleMenu() {
             document.querySelector('.nav-links').classList.toggle('show');
@@ -164,7 +18,7 @@
     
     <header>
         <div class="logo">
-            <img src="images/logo.png" alt="Logo">
+            <img src="image/logo.png" alt="Logo">
             <div>
                 <h2 style="color: white; font-weight: bold; margin: 5px 0 0 0;">Novos Lançamentos</h2>
             </div>
