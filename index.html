@@ -3,79 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="getmdl/material.min.css">
+    <script src="getmdl/material.min.js"></script>
+    <link rel="manifest" href="manifest.webmanifest">
     <title>NewGeek</title>
     <style>
-        .nav {
-            position: relative;
+        footer a {
+            color: #fff;
+            text-decoration: underline;
         }
-        .menu-toggle {
-            display: none;
-            font-size: 30px;
-            background: none;
-            color: #ffffff;
-            border: none;
-            cursor: pointer;
-            padding: 10px;
-            border-radius: 5px;
+        footer a:hover {
+            color: #ccc;
         }
         .nav-links {
-            left: 0%;
             display: flex;
-            gap: 10px;
+            gap: 15px;
         }
+
         .nav-links button {
-            padding: 10px;
+            background: #fff;
+            color: black;
             border: none;
-            background: #000000;
-            color: white;
-            border-radius: 10px;
+            padding: 10px 15px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 14px;
         }
-        .nav-links button:hover {
-            background: #000000;
-        }
-        .close-btn {
+
+        
+        .menu-toggle {
             display: none;
             background: none;
             border: none;
-            font-size: 20px;
+            font-size: 30px;
             cursor: pointer;
-            text-align: right;
+            color: white;
         }
-        @media (max-width: 600px) {
-            .header {
-                flex-direction: row;
-                justify-content: space-between;
-            }
+
+        /* Menu Mobile */
+        @media (max-width: 768px) {
             .menu-toggle {
                 display: block;
             }
+            
             .nav-links {
-                display: none;
+                display: flex;
                 flex-direction: column;
                 position: fixed;
                 top: 0;
-                right: 0;
-                width: 60%; 
-                height: 100%;
-                background: white;
-                box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
-                padding: 20px;
-                border-top-left-radius: 10px;
-                border-bottom-left-radius: 10px;
-                transition: transform 0.3s ease;
-                transform: translateX(100%);
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.95);
+                padding-top: 60px;
+                transition: right 0.3s ease-in-out;
+                text-align: center;
+                box-shadow: -5px 0 10px rgba(255, 255, 255, 0.1);
             }
+
             .nav-links.show {
-                display: flex;
-                transform: translateX(0);
+                right: 0;
             }
-            .close-btn {
+
+            .nav-links button {
+                background: none;
+                color: white;
+                border: none;
+                padding: 15px;
+                font-size: 18px;
                 display: block;
+                width: 100%;
+            }
+
+            .close-menu {
+                position: absolute;
+                top: 15px;
+                right: 20px;
+                font-size: 25px;
+                cursor: pointer;
+                color: white;
             }
         }
-        
         body {
             font-family: Arial, sans-serif;
             background-color: #000000;
@@ -157,21 +164,33 @@
     
     <header>
         <div class="logo">
-            <img src="logo.png" alt="Logo">
+            <img src="images/logo.png" alt="Logo">
+        </div>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <nav class="nav-links">
             
-        </div>
-        <div class="nav">
-            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-            <div class="nav-links">
-                <button class="close-btn" onclick="toggleMenu()">✖</button>
-                <button>Início</button>
-                <button>Comunidade</button>
-                <button>Registrar-se</button>
-                <button>Login</button>
-            </div>
-            <button id="installButton" style="display: none;">Instalar</button>
-        </div>
+            <button onclick="toggleMenu()">Início</button>
+            <button onclick="toggleMenu()">Comunidade</button>
+            <button onclick="toggleMenu()">Registrar-se</button>
+            <button onclick="toggleMenu()">Login</button>
+        </nav>
     </header>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('show');
+        }
+
+        
+        document.addEventListener("click", function(event) {
+            let menu = document.querySelector(".nav-links");
+            let toggle = document.querySelector(".menu-toggle");
+
+            if (!menu.contains(event.target) && !toggle.contains(event.target)) {
+                menu.classList.remove("show");
+            }
+        });
+    </script>
 
     
     <section class="content">        
@@ -193,5 +212,12 @@
             <b>Plataformas:</b><p>PS5, Xbox Series X/S, PC</p>
         </div>
     </section>
+    <footer>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=douglaslsfilho08@gmail.com&su=Contato&body=Olá, quero falar com você!" target="_blank">
+            Entre em Contato
+          </a>
+                  
+    </footer>
+    <script src="index.js"></script>
 </body>
 </html>
