@@ -48,6 +48,7 @@ footer a:hover {
         transition: right 0.3s ease-in-out;
         text-align: center;
         box-shadow: -5px 0 10px rgba(255, 255, 255, 0.1);
+        z-index: 1000
     }
 
     .nav-links.show {
